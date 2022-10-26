@@ -1,7 +1,7 @@
 version: "3"
 services:
   otel-collector:
-    image: ${REPOSITORY}-otel-collector:${PROJECT_VERSION}
+    image: quay.io/signalfx/splunk-otel-collector:latest
     build:
       context: otel-collector
     command: ["--config=/etc/otel-collector-config.yml"]
@@ -10,9 +10,9 @@ services:
     networks:
       app-network:
     environment:
-      INSTANA_OTLP_ENDPOINT: ${INSTANA_OTLP_ENDPOINT}
-      INSTANA_HOST_ID: ${INSTANA_HOST_ID}
-      INSTANA_AGENT_KEY: ${agent_key}
+      SPLUNK_ACCESS_TOKEN: ${SPLUNK_ACCESS_TOKEN}
+      SPLUNK_REALM: ${SPLUNK_REALM}
+      SPLUNK_MEMORY_LIMIT_MIB: ${SPLUNK_MEMORY_LIMIT_MIB}
     logging: &logging
       driver: "json-file"
       options:

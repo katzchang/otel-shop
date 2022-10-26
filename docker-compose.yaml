@@ -112,6 +112,8 @@ services:
     volumes:
       - ./web/conf/opentelemetry.conf:/etc/apache2/mods-available/opentelemetry.conf
       - ./web/html:/var/www/html
+    ports:
+      - "8080:80"
     healthcheck:
       test:
         [
